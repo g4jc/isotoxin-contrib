@@ -100,7 +100,6 @@
     <ClCompile Include="src\libflac\float.c" />
     <ClCompile Include="src\libflac\format.c" />
     <ClCompile Include="src\libflac\lpc.c" />
-    <ClCompile Include="src\libflac\lpc_intrin_sse.c" />
     <ClCompile Include="src\libflac\lpc_intrin_sse2.c" />
     <ClCompile Include="src\libflac\lpc_intrin_sse41.c" />
     <ClCompile Include="src\libflac\md5.c" />
