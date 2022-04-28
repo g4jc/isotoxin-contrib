@@ -6,7 +6,7 @@ if x%libdir%==x set libdir=..\..\source\libs-external
 if exist %libdir%\giflib\lib\gif_lib.h goto alrd
 
 if exist giflib rd giflib /S /Q
-git clone git://git.code.sf.net/p/giflib/code giflib
+git clone https://github.com/mirrorer/giflib
 move giflib\lib %libdir%\giflib >nul
 rd giflib /S /Q
 

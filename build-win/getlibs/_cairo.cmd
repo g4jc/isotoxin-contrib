@@ -7,8 +7,16 @@ if exist %libdir%\cairo\src\cairo.h goto alrd
 
 if exist cairo rd cairo /S /Q
 if exist pixman rd pixman /S /Q
-git clone git://anongit.freedesktop.org/git/cairo
-git clone git://anongit.freedesktop.org/git/pixman.git pixman
+git clone https://github.com/freedesktop/cairo
+cd cairo
+:: Hardcode to Dec 20, 2019 version
+git reset --hard 2982adec7698ef6cc55b6eb27f28200a95013cdc
+cd ..
+git clone https://github.com/freedesktop/pixman pixman
+cd pixman
+:: Hardcode to Apr 10, 2019 tags/pixman-0.38.4 version
+git reset --hard e8df10eea9609609568bf4cbc05796594c1b978d
+cd ..
 
 md %libdir%\cairo\src
 md %libdir%\cairo\pixman

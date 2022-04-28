@@ -18,6 +18,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\pthread-win32\pthread_mutexattr_destroy.c" />
+    <ClCompile Include="..\..\pthread-win32\pthread_mutexattr_init.c" />
+    <ClCompile Include="..\..\pthread-win32\pthread_mutexattr_settype.c" />
+    <ClCompile Include="..\..\pthread-win32\pthread_mutex_lock.c" />
+    <ClCompile Include="..\..\pthread-win32\pthread_mutex_trylock.c" />
+    <ClCompile Include="..\..\pthread-win32\pthread_mutex_unlock.c" />
+    <ClCompile Include="..\..\pthread-win32\pthread_rwlock_destroy.c" />
+    <ClCompile Include="..\..\pthread-win32\pthread_rwlock_init.c" />
     <ClCompile Include="..\toxav\audio.c" />
     <ClCompile Include="..\toxav\bwcontroller.c" />
     <ClCompile Include="..\toxav\groupav.c" />
@@ -27,9 +35,10 @@
     <ClCompile Include="..\toxav\toxav.c" />
     <ClCompile Include="..\toxav\toxav_old.c" />
     <ClCompile Include="..\toxav\video.c" />
+    <ClCompile Include="..\toxcore\announce.c" />
     <ClCompile Include="..\toxcore\crypto_core.c" />
-    <ClCompile Include="..\toxcore\crypto_core_mem.c" />
     <ClCompile Include="..\toxcore\DHT.c" />
+    <ClCompile Include="..\toxcore\forwarding.c" />
     <ClCompile Include="..\toxcore\friend_connection.c" />
     <ClCompile Include="..\toxcore\friend_requests.c" />
     <ClCompile Include="..\toxcore\group.c" />
@@ -37,6 +46,7 @@
     <ClCompile Include="..\toxcore\list.c" />
     <ClCompile Include="..\toxcore\logger.c" />
     <ClCompile Include="..\toxcore\Messenger.c" />
+    <ClCompile Include="..\toxcore\mono_time.c" />
     <ClCompile Include="..\toxcore\network.c" />
     <ClCompile Include="..\toxcore\net_crypto.c" />
     <ClCompile Include="..\toxcore\onion.c" />
@@ -44,14 +54,21 @@
     <ClCompile Include="..\toxcore\onion_client.c" />
     <ClCompile Include="..\toxcore\ping.c" />
     <ClCompile Include="..\toxcore\ping_array.c" />
+    <ClCompile Include="..\toxcore\state.c" />
+    <ClCompile Include="..\toxcore\timed_auth.c" />
     <ClCompile Include="..\toxcore\TCP_client.c" />
+    <ClCompile Include="..\toxcore\TCP_common.c" />
     <ClCompile Include="..\toxcore\TCP_connection.c" />
     <ClCompile Include="..\toxcore\TCP_server.c" />
     <ClCompile Include="..\toxcore\tox.c" />
+    <ClCompile Include="..\toxcore\tox_private.c" />
+    <ClCompile Include="..\toxcore\tox_api.c" />
     <ClCompile Include="..\toxcore\util.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\pthread_simple\pthread.h" />
+    <ClInclude Include="..\..\libsodium\src\libsodium\include\sodium\crypto_sign.h" />
+    <ClInclude Include="..\..\libsodium\src\libsodium\include\sodium\crypto_sign_ed25519.h" />
+    <ClInclude Include="..\..\pthread-win32\pthread.h" />
     <ClInclude Include="..\toxav\audio.h" />
     <ClInclude Include="..\toxav\bwcontroller.h" />
     <ClInclude Include="..\toxav\groupav.h" />
@@ -62,6 +79,7 @@
     <ClInclude Include="..\toxav\video.h" />
     <ClInclude Include="..\toxcore\crypto_core.h" />
     <ClInclude Include="..\toxcore\DHT.h" />
+    <ClInclude Include="..\toxcore\forwarding.h" />
     <ClInclude Include="..\toxcore\friend_connection.h" />
     <ClInclude Include="..\toxcore\friend_requests.h" />
     <ClInclude Include="..\toxcore\group.h" />
@@ -70,6 +88,7 @@
     <ClInclude Include="..\toxcore\logger.h" />
     <ClInclude Include="..\toxcore\Messenger.h" />
     <ClInclude Include="..\toxcore\misc_tools.h" />
+    <ClInclude Include="..\toxcore\mono_time.h" />
     <ClInclude Include="..\toxcore\network.h" />
     <ClInclude Include="..\toxcore\net_crypto.h" />
     <ClInclude Include="..\toxcore\onion.h" />
@@ -77,10 +96,14 @@
     <ClInclude Include="..\toxcore\onion_client.h" />
     <ClInclude Include="..\toxcore\ping.h" />
     <ClInclude Include="..\toxcore\ping_array.h" />
+    <ClInclude Include="..\toxcore\state.h" />
+    <ClInclude Include="..\toxcore\timed_auth.h" />
     <ClInclude Include="..\toxcore\TCP_client.h" />
+    <ClInclude Include="..\toxcore\TCP_common.h" />
     <ClInclude Include="..\toxcore\TCP_connection.h" />
     <ClInclude Include="..\toxcore\TCP_server.h" />
     <ClInclude Include="..\toxcore\tox.h" />
+    <ClInclude Include="..\toxcore\tox_private.h" />
     <ClInclude Include="..\toxcore\util.h" />
     <ClInclude Include="config.h" />
     <ClInclude Include="unistd.h" />
@@ -104,16 +127,12 @@
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <TargetName>$(ProjectName)d</TargetName>
-  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;HAVE_CONFIG_H;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\..\pthread_simple;$(ProjectDir)..\..\libsodium\src\libsodium\include;$(ProjectDir)..\..\libvpx;$(ProjectDir)..\..\opus\include;$(ProjectDir)..\..\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\..\libs-external\pthread-win32\;$(ProjectDir)..\..\libsodium\src\libsodium\include;$(ProjectDir)..\..\libvpx;$(ProjectDir)..\..\opus\include;$(ProjectDir)..\..\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <WholeProgramOptimization>false</WholeProgramOptimization>
@@ -126,13 +145,14 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <PreprocessorDefinitions>NDEBUG;HAVE_CONFIG_H;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\..\pthread_simple;$(ProjectDir)..\..\libsodium\src\libsodium\include;$(ProjectDir)..\..\libvpx;$(ProjectDir)..\..\opus\include;$(ProjectDir)..\..\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\..\libs-external\pthread-win32;$(ProjectDir)..\..\libsodium\src\libsodium\include;$(ProjectDir)..\..\libvpx;$(ProjectDir)..\..\opus\include;$(ProjectDir)..\..\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(ProjectDir)\..\source\bin\x64_MSVC2015.Release;$(;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
