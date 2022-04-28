@@ -8,6 +8,7 @@ md %GARBAGE%
 md ..\tools
 copy kill_crap.cmd ..\tools
 copy prebuild.cmd ..\tools
+copy backup_final.cmd ..\tools
 
 
 if a%1a == a64a (

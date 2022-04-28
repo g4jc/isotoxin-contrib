@@ -26,6 +26,6 @@ copy .\*.template ..\bin\~assets\
 copy .\*.svg ..\bin\~assets\
 
 cd ..\bin\~assets
-..\..\build-win\7z a -tzip -r -mx=9 ..\isotoxin.data
+..\..\build-win\7z a -tzip -r -mx=9 ..\release\isotoxin.data
 cd ..
 rd /S /Q ~assets
