@@ -65,7 +65,7 @@
       <ModuleDefinitionFile>shared.def</ModuleDefinitionFile>
     </Link>
     <PostBuildEvent>
-      <Command>$(ProjectDir)../../tools/sharedlib.cmd $(TargetDir)$(TargetName) $(SolutionDir)libs</Command>
+      <Command>copy /Y "$(TargetDir)$(TargetName).lib" "$(SolutionDir)libs\$(TargetName).lib"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Final|x64'">
@@ -80,7 +80,7 @@
       <ModuleDefinitionFile>shared.def</ModuleDefinitionFile>
     </Link>
     <PostBuildEvent>
-      <Command>$(ProjectDir)../../tools/sharedlib.cmd $(TargetDir)$(TargetName) $(SolutionDir)libs</Command>
+      <Command>copy /Y "$(TargetDir)$(TargetName).lib" "$(SolutionDir)libs\$(TargetName).lib"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Optimized|x64'">
@@ -96,7 +96,7 @@
       <ModuleDefinitionFile>shared.def</ModuleDefinitionFile>
     </Link>
     <PostBuildEvent>
-      <Command>$(ProjectDir)../../tools/sharedlib.cmd $(TargetDir)$(TargetName) $(SolutionDir)libs</Command>
+      <Command>copy /Y "$(TargetDir)$(TargetName).lib" "$(SolutionDir)libs\$(TargetName).lib"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
